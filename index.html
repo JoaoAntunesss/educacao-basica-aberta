@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt" class="js-off">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Educação Básica Aberta</title>
+<meta name="description" content="A Licenciatura em Educação Básica completa e gratuita: cadeiras por ordem, mapa de pré-requisitos, lições, tarefas e recursos gratuitos, comparando a ESE de Lisboa, a ESE do Porto, a Universidade de Évora e o Politécnico de Leiria.">
+<meta name="theme-color" content="#04060d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2304060d'/%3E%3Cpath d='M11 4v4M16 4v4M21 4v4M11 24v4M16 24v4M21 24v4M4 11h4M4 16h4M4 21h4M24 11h4M24 16h4M24 21h4' stroke='%233a96ff' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='8' y='8' width='16' height='16' rx='2.5' fill='%2316224a' stroke='%233a96ff' stroke-width='1.6'/%3E%3Crect x='12.5' y='12.5' width='7' height='7' rx='1' fill='%23ff8030'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+</head>
+<body>
+<script>document.documentElement.classList.replace("js-off","js")</script>
+<a class="skip" href="#app">Saltar para o conteúdo</a>
+<header class="top">
+  <a class="brand" href="#/">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 3v5M16 3v5M21 3v5M11 24v5M16 24v5M21 24v5M3 11h5M3 16h5M3 21h5M24 11h5M24 16h5M24 21h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="8" y="8" width="16" height="16" rx="2.5" fill="#16224a" stroke="currentColor" stroke-width="1.6"/><rect x="12.5" y="12.5" width="7" height="7" rx="1" fill="var(--fire)"/></svg>
+    <span class="brand-name" id="brandName">Educação Básica Aberta</span>
+  </a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#/" data-nav="home" id="navHome">Trilho</a>
+    <a href="#/rede" data-nav="net" id="navNet">Rede</a>
+    <a href="#/cadeiras" data-nav="cat" id="navCat">Cadeiras</a>
+    <a href="#/sobre" data-nav="about" id="navAbout">Sobre</a>
+  </nav>
+  <button class="lang" id="langBtn" type="button" aria-label="Mudar língua / Change language">EN</button>
+  <a class="btn-fire nav-cta" id="contBtn" href="#/">Continuar</a>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer class="foot" id="foot"></footer>
+<script src="js/data.js"></script>
+<script src="js/lessons.js"></script>
+<script src="js/app.js"></script>
+<script type="module">
+const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+const classic = () => new Promise(r => { const s = document.createElement('script'); s.src = 'js/placa.js'; s.onload = s.onerror = r; document.head.appendChild(s); });
+try { if (!gl) throw 0; await import('./js/placa3d.js'); } catch (e) { await classic(); }
+window.dispatchEvent(new Event('placa-ready'));
+</script>
+</body>
+</html>
