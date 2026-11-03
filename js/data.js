@@ -11,15 +11,15 @@ window.SEMS = [
   { id: 'ADV', pt: 'Mestrado (para ser professor ou educador)', en: 'Master’s (to become a teacher)' }
 ];
 window.AREAS = {
-  lp: { pt: 'Português', en: 'Portuguese', c: '#ef4444' },
-  mat: { pt: 'Matemática', en: 'Mathematics', c: '#a855f7' },
-  cie: { pt: 'Ciências', en: 'Science', c: '#10b981' },
-  chs: { pt: 'História e Geografia', en: 'History & Geography', c: '#eab308' },
-  art: { pt: 'Expressões', en: 'Arts & PE', c: '#ec4899' },
-  edu: { pt: 'Educação', en: 'Education', c: '#3b82f6' },
-  did: { pt: 'Didáticas', en: 'Teaching methods', c: '#f97316' },
-  ipp: { pt: 'Prática profissional', en: 'Teaching practice', c: '#06b6d4' },
-  tr: { pt: 'Transversal', en: 'Cross-cutting', c: '#64748b' }
+  lp: { pt: 'Português', en: 'Portuguese', c: '#d64a3a' },
+  mat: { pt: 'Matemática', en: 'Mathematics', c: '#3d5bd6' },
+  cie: { pt: 'Ciências', en: 'Science', c: '#3a9152' },
+  chs: { pt: 'História e Geografia', en: 'History & Geography', c: '#c08417' },
+  art: { pt: 'Expressões', en: 'Arts & PE', c: '#c2448a' },
+  edu: { pt: 'Educação', en: 'Education', c: '#7656c4' },
+  did: { pt: 'Didáticas', en: 'Teaching methods', c: '#df7426' },
+  ipp: { pt: 'Prática profissional', en: 'Teaching practice', c: '#178fa0' },
+  tr: { pt: 'Transversal', en: 'Cross-cutting', c: '#7d8592' }
 };
 window.UNIS = [
   { id: 'eselx', n: 'ESE Lisboa', full: 'Escola Superior de Educação de Lisboa — Licenciatura em Educação Básica (plano de 2025)', src: 'https://www.eselx.ipl.pt/sites/default/files/2025-09/NOVOPL_LEB2025.pdf' },

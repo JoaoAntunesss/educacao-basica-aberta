@@ -1,4 +1,4 @@
-/* Educação Básica Aberta — interface (sem dependências). O curso é um circuito. */
+/* Educação Básica Aberta — interface (sem dependências). O curso é um mapa de conceitos num caderno. */
 (() => {
 'use strict';
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -21,14 +21,14 @@ const T = {
     cont: 'Continuar', start: 'Começar', homeT: 'Da primeira letra ao primeiro dia de aula.', homeP: 'Uma licenciatura completa em Educação Básica, com lições, exercícios e um trilho que te diz sempre o que fazer a seguir. Juntámos o que ensinam a ESE de Lisboa, a ESE do Porto, a Universidade de Évora e o Politécnico de Leiria.',
     stepT: 'O teu próximo passo', nextLesson: (n, m) => `Lição ${n} de ${m}`, nextTask: (n, m) => `Tarefa ${n} de ${m}`, minutes: n => `${n} min de leitura`, noLesson: 'Lição em preparação, com recursos para estudar',
     after: 'Depois disto', allDone: 'Concluíste a licenciatura inteira. O passo seguinte é um mestrado em ensino.',
-    howT: 'Como se usa', how: ['Segue o trilho pela ordem. Cada cadeira assenta nas anteriores, como num curso a sério.', 'Em cada tópico há uma lição com exemplos e exercícios resolvidos. Quando o dominares, marca-o.', 'O teu percurso ilumina-se à medida que aprendes, e o botão Continuar leva-te sempre ao passo seguinte.'],
+    howT: 'Como se usa', how: ['Segue o trilho pela ordem. Cada cadeira assenta nas anteriores, como num curso a sério.', 'Em cada tópico há uma lição com exemplos e exercícios resolvidos. Quando o dominares, marca-o.', 'O que já dominas fica sublinhado a marcador, e o botão Continuar leva-te sempre ao passo seguinte.'],
     trailT: 'O trilho', trailP: 'Seis semestres e uma fase avançada, pela ordem em que se aprendem.', phaseDone: (a, b) => `${a} de ${b} cadeiras concluídas`, showPhase: 'Ver cadeiras', hidePhase: 'Esconder',
     st: { done: 'Concluída', doing: 'Em curso', ready: 'Pronta a começar', wait: 'Depois de' }, youAreHere: 'Estás aqui',
     statT: 'Onde estás', statTopics: 'tópicos dominados', statCourses: 'cadeiras concluídas', statPhase: 'fase atual',
     lessonsIn: 'Nesta cadeira', tasksLink: 'Tarefas práticas da cadeira', mastered: 'Dominei, seguinte', skip: 'Ainda não, seguinte', masteredLast: 'Dominei, voltar à cadeira', reading: 'Progresso de leitura',
-    catT2: 'Todas as cadeiras', catP2: 'O catálogo completo, para procurar por tema ou material.', boardLink: 'Ver o curso em 3D',
+    catT2: 'Todas as cadeiras', catP2: 'O catálogo completo, para procurar por tema ou material.', boardLink: 'Ver o mapa de conceitos do curso',
     closeT: 'Educação Básica Aberta',
-    netT: 'O teu percurso', netP: 'Cada cadeira é um cartão e os tópicos são as peças à volta dele. As linhas ligam-no às cadeiras de que depende. O que já dominas ilumina-se e envia impulsos para o que vem a seguir.', netHint: 'Arrasta para rodar o mapa, usa a roda ou dois dedos para aproximar e Shift ou o botão direito para deslizar. Toca num cartão para o abrir.', zin: 'Aproximar', zout: 'Afastar', zfit: 'Ver tudo', legHot: 'Dominado', legCold: 'Por aprender', legSyn: 'Pista: pré-requisito', legDen: 'Peça: tópico', openLesson: 'Abrir a lição',
+    netT: 'O teu percurso', netP: 'Cada cadeira é um balão do mapa de conceitos e os quadradinhos são os seus tópicos. As setas a lápis vêm das cadeiras de que depende. O que já dominas fica sublinhado a marcador e com um visto.', netHint: 'Arrasta para mover o mapa e usa a roda ou dois dedos para aproximar. Toca num balão para o abrir.', zin: 'Aproximar', zout: 'Afastar', zfit: 'Ver tudo', legHot: 'Dominado', legCold: 'Por aprender', legSyn: 'Seta: pré-requisito', legDen: 'Quadradinho: tópico', openLesson: 'Abrir a lição',
     heroT: 'Da primeira letra ao primeiro dia de aula.',
     heroP: 'Uma licenciatura completa em Educação Básica, cadeira a cadeira. Cada uma junta o que ensinam a ESE de Lisboa, a ESE do Porto, a Universidade de Évora e o Politécnico de Leiria, com tarefas práticas, materiais e recursos gratuitos.',
     meterP: 'O teu progresso', items: (a, b) => `${a} de ${b} tópicos e tarefas`,
@@ -44,7 +44,7 @@ const T = {
     pinIn: 'Precisas antes', pinOut: 'Abre caminho para', noIn: 'Nada: podes começar já', noOut: 'Fim deste ramo',
     prev: 'Cadeira anterior', nextC: 'Cadeira seguinte',
     mapT: 'Mapa do curso', mapP: 'As colunas são semestres. Escolhe um cartão para veres tudo o que a cadeira tem e o caminho que leva até ela.',
-    pick: 'Escolhe um cartão no mapa para veres aqui os conteúdos da cadeira.', pickNet: 'Toca num cartão para veres aqui os tópicos, as tarefas e os livros da cadeira.', openCourse: 'Abrir a página da cadeira',
+    pick: 'Escolhe um cartão no mapa para veres aqui os conteúdos da cadeira.', pickNet: 'Toca num balão do mapa para veres aqui os tópicos, as tarefas e os livros da cadeira.', openCourse: 'Abrir a página da cadeira',
     lesson: 'Lição', lessonSoon: 'A lição deste tópico ainda está a ser escrita. Entretanto, estes recursos cobrem-no:', learned: 'Já domino este tópico', backCourse: 'Voltar à cadeira', prevT: 'Tópico anterior', nextT: 'Tópico seguinte',
     aboutT: 'Sobre este site', progress: 'O teu progresso', progressP: 'O progresso fica guardado só neste browser. Podes exportá-lo para um ficheiro e importá-lo noutro computador.',
     export: 'Exportar progresso', import: 'Importar progresso', reset: 'Apagar progresso', resetQ: 'Apagar todo o progresso?', imported: 'Progresso importado', exported: 'Progresso exportado', bad: 'Este ficheiro não é um progresso exportado deste site.',
@@ -55,14 +55,14 @@ const T = {
     cont: 'Continue', start: 'Start', homeT: 'From the first letter to your first class.', homeP: 'A complete degree in Basic Education (primary teacher education), with lessons, exercises and a path that always tells you what to do next. It brings together what ESE Lisboa, ESE Porto, the University of Évora and the Polytechnic of Leiria teach.',
     stepT: 'Your next step', nextLesson: (n, m) => `Lesson ${n} of ${m}`, nextTask: (n, m) => `Task ${n} of ${m}`, minutes: n => `${n} min read`, noLesson: 'Lesson in preparation, with resources to study',
     after: 'After this', allDone: 'You finished the whole degree. The next step is a master’s in teaching.',
-    howT: 'How it works', how: ['Follow the path in order. Each course builds on the earlier ones, like a real degree.', 'Every topic has a lesson with examples and solved exercises. Tick it when you have mastered it.', 'Your journey lights up as you learn, and the Continue button always takes you to the next step.'],
+    howT: 'How it works', how: ['Follow the path in order. Each course builds on the earlier ones, like a real degree.', 'Every topic has a lesson with examples and solved exercises. Tick it when you have mastered it.', 'What you have mastered gets highlighted, and the Continue button always takes you to the next step.'],
     trailT: 'The path', trailP: 'Six semesters and an advanced stage, in the order they are learned.', phaseDone: (a, b) => `${a} of ${b} courses completed`, showPhase: 'Show courses', hidePhase: 'Hide',
     st: { done: 'Completed', doing: 'In progress', ready: 'Ready to start', wait: 'After' }, youAreHere: 'You are here',
     statT: 'Where you are', statTopics: 'topics mastered', statCourses: 'courses completed', statPhase: 'current stage',
     lessonsIn: 'In this course', tasksLink: 'Hands-on tasks for this course', mastered: 'Mastered, next', skip: 'Not yet, next', masteredLast: 'Mastered, back to the course', reading: 'Reading progress',
-    catT2: 'All courses', catP2: 'The full catalogue, to search by topic or material.', boardLink: 'See the degree in 3D',
+    catT2: 'All courses', catP2: 'The full catalogue, to search by topic or material.', boardLink: 'See the degree as a concept map',
     closeT: 'Open Basic Education',
-    netT: 'Your journey', netP: 'Each course is a card and its topics are the pieces around it. Lines connect it to the courses it depends on. What you have mastered lights up and sends pulses to what comes next.', netHint: 'Drag to rotate the map, scroll or pinch to zoom, and use Shift or right-drag to pan. Tap a card to open it.', zin: 'Zoom in', zout: 'Zoom out', zfit: 'Show all', legHot: 'Mastered', legCold: 'To learn', legSyn: 'Trace: prerequisite', legDen: 'Piece: topic', openLesson: 'Open the lesson',
+    netT: 'Your journey', netP: 'Each course is a balloon on the concept map and the little boxes are its topics. Pencil arrows come from the courses it depends on. What you have mastered gets highlighted and ticked.', netHint: 'Drag to move the map and scroll or pinch to zoom. Tap a balloon to open it.', zin: 'Zoom in', zout: 'Zoom out', zfit: 'Show all', legHot: 'Mastered', legCold: 'To learn', legSyn: 'Arrow: prerequisite', legDen: 'Box: topic', openLesson: 'Open the lesson',
     heroT: 'From the first letter to your first class.',
     heroP: 'A complete degree in Basic Education, course by course. Each one brings together what ESE Lisboa, ESE Porto, the University of Évora and the Polytechnic of Leiria teach, with hands-on tasks, materials and free resources.',
     meterP: 'Your progress', items: (a, b) => `${a} of ${b} topics and tasks`,
@@ -78,7 +78,7 @@ const T = {
     pinIn: 'You need first', pinOut: 'Leads to', noIn: 'Nothing: start now', noOut: 'End of this branch',
     prev: 'Previous course', nextC: 'Next course',
     mapT: 'Degree map', mapP: 'Columns are semesters. Pick a card to see everything the course contains and the path that leads to it.',
-    pick: 'Pick a card on the map to see the course contents here.', pickNet: 'Tap a card to see the course topics, tasks and books here.', openCourse: 'Open the course page',
+    pick: 'Pick a card on the map to see the course contents here.', pickNet: 'Tap a balloon on the map to see the course topics, tasks and books here.', openCourse: 'Open the course page',
     lesson: 'Lesson', lessonSoon: 'The lesson for this topic is still being written. Meanwhile, these resources cover it:', learned: 'I know this topic', backCourse: 'Back to the course', prevT: 'Previous topic', nextT: 'Next topic',
     aboutT: 'About this site', progress: 'Your progress', progressP: 'Progress is saved in this browser only. You can export it to a file and import it on another computer.',
     export: 'Export progress', import: 'Import progress', reset: 'Delete progress', resetQ: 'Delete all progress?', imported: 'Progress imported', exported: 'Progress exported', bad: 'This file is not a progress export from this site.',
@@ -167,11 +167,7 @@ function boardSVG(id) {
     const x2 = b.x - 7, y2 = pinY(b.y, inc[c.id].indexOf(p), inc[c.id].length);
     const l = (lane++ % 6);
     let d;
-    if (b.ci - a.ci === 1) { const mx = x1 + 10 + l * 4.5; d = `M${x1} ${y1}H${mx}V${y2}H${x2}`; }
-    else { // route through the gap row above the target, between chips
-      const gx1 = x1 + 10 + l * 4.5, gy = b.y - G.rowGap / 2 - 6 + l * 2.4, gx2 = x2 - 12 - l * 3;
-      d = `M${x1} ${y1}H${gx1}V${gy}H${gx2}V${y2}H${x2}`;
-    }
+    { const dx = Math.max(40, (x2 - x1) * .45) + l * 3; d = `M${x1} ${y1}C${x1 + dx} ${y1} ${x2 - dx} ${y2} ${x2} ${y2}`; }
     traces.push(`<path class="trace" data-from="${p}" data-to="${c.id}" d="${d}"/><circle class="via" data-from="${p}" data-to="${c.id}" cx="${x1}" cy="${y1}" r="2.6"/><circle class="via" data-from="${p}" data-to="${c.id}" cx="${x2}" cy="${y2}" r="2.6"/>`);
   }));
   const fit = s => { const max = 21; if (s.length <= max) return [s]; const w = s.split(' '); let a = ''; while (w.length && (a + ' ' + w[0]).trim().length <= max) a = (a + ' ' + w.shift()).trim(); let b = w.join(' '); if (b.length > max) b = b.slice(0, max - 1) + '…'; return [a || s.slice(0, max), b]; };
@@ -226,7 +222,7 @@ function nextPanel() {
   const mins = isT ? readMin(c.id, ns.j) : 0, fresh = totals()[0] === 0;
   const meta = [isT ? t('nextLesson')(ns.j + 1, c.topics.length) : t('nextTask')(ns.j + 1, c.tasks.length), mins ? t('minutes')(mins) : (isT ? t('noLesson') : '')].filter(Boolean);
   const after = upcoming(3).map(u => `<li><a href="#/l/${u.c.id}/${u.j + 1}"><span>${esc(half(u.c.topics[u.j]))}</span><small>${esc(nm(u.c))}</small></a></li>`).join('');
-  return `<section class="next rise tilt" aria-labelledby="nxt"><div class="next-main"><h2 id="nxt">${t('stepT')}</h2>
+  return `<section class="next rise" aria-labelledby="nxt"><div class="next-main"><h2 id="nxt">${t('stepT')}</h2>
       <p class="next-course"><a href="#/c/${c.id}">${esc(nm(c))}</a></p><p class="next-title">${esc(title)}</p>
       <p class="next-meta">${meta.map(esc).join('<span class="sep"></span>')}</p>
       <a class="btn-fire" href="${ns.href}">${fresh ? t('start') : t('cont')}</a>
@@ -327,7 +323,7 @@ function viewCourse(id) {
     <ul class="facts"><li>${t('sem')}<b>${esc(semName(c.sem))}</b></li><li>${t('area')}<b><i style="width:14px;height:4px;border-radius:1px;background:${areaC(c)}"></i>${esc(AREAS[c.area][L])}</b></li><li>${t('diff')}<b>${sig(c.diff)} ${t('diffN')[c.diff]}</b></li><li>${t('progress')}<b id="cpct">${cp}% ${t('done2')}</b></li></ul></div></header>
   <section class="pinout" aria-label="${t('pinIn')} / ${t('pinOut')}">
     <div class="pins in"><h3>${t('pinIn')}</h3>${pinList(c.pre, t('noIn'))}</div>
-    <div class="die tilt"><div class="die-legs" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div><b>${esc(nm(c))}</b><small>${t('items')(p.t.length + p.k.length, c.topics.length + c.tasks.length)}</small>${charge(cp)}</div></div>
+    <div class="die"><div class="die-legs" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div><b>${esc(nm(c))}</b><small>${t('items')(p.t.length + p.k.length, c.topics.length + c.tasks.length)}</small>${charge(cp)}</div></div>
     <div class="pins out"><h3>${t('pinOut')}</h3>${pinList(DEPS[c.id] || [], t('noOut'))}</div>
   </section>
   <div class="cols"><div>
