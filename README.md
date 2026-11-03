@@ -10,7 +10,8 @@ Um guia gratuito e aberto da **Licenciatura em Educação Básica** (1.º ciclo 
 - Para cada cadeira: descrição, tópicos, tarefas práticas, materiais e ligações às Aprendizagens Essenciais e ao Perfil dos Alunos à Saída da Escolaridade Obrigatória.
 - Áreas: Língua Portuguesa, Matemática, Ciências, Ciências Humanas e Sociais, Expressões Artísticas, Ciências da Educação, Didáticas, Iniciação à Prática Profissional e Tronco comum.
 - Comparação com os planos de estudo da ESE de Lisboa, ESE do Porto, Universidade de Évora e ESE de Leiria.
-- Mapa interativo em 3D (WebGL), progresso guardado no navegador, pesquisa, modo claro e escuro, português e inglês.
+- Design de caderno escolar: folha pautada com margem, títulos em letra manuscrita portuguesa (Playwrite PT), tinta azul e marcador amarelo para o que já dominas.
+- Mapa de conceitos interativo desenhado a lápis (cada cadeira é um balão, cada tópico um quadradinho), progresso guardado no navegador, pesquisa, português e inglês.
 - Lições completas escritas em Markdown em `conteudo/<cadeira>/<n>.md` (em construção).
 
 ## Como funciona
@@ -19,7 +20,7 @@ Um guia gratuito e aberto da **Licenciatura em Educação Básica** (1.º ciclo 
 
 - `js/data.js` — semestres, áreas, escolas e cadeiras.
 - `js/app.js` — a interface.
-- `js/placa3d.js` — o mapa 3D em Three.js (com recurso para `js/placa.js` se não houver WebGL).
+- `js/caderno.js` — o mapa de conceitos em SVG, sem bibliotecas.
 - `js/lessons.js` — gerado a partir de `conteudo/` com `node scripts/build-lessons.mjs`.
 
 Para ver localmente: abre o `index.html` ou corre `python -m http.server` na pasta.
